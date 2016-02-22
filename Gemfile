@@ -9,7 +9,7 @@ gem 'bcrypt'
 gem 'dotenv'
 gem 'pg'
 gem 'sinatra-partial'
-
+gem 'haml'
 
 group :test do
   gem 'capybara'

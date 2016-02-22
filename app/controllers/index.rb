@@ -1,12 +1,12 @@
 class BrainStormer < Sinatra::Base
 
   get '/' do
-    erb :index
+    haml :index
   end
 
   get '/users' do
-    @user = 'alex'
-    erb :users
+    @user = 'greask'
+    haml :users
   end
 
 end
