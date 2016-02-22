@@ -1,5 +1,7 @@
 class BrainStormer < Sinatra::Base
+
   get '/' do
-    erb :index
+    layout = partial :layout
   end
+
 end

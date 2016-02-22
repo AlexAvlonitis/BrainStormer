@@ -7,6 +7,9 @@ gem 'data_mapper'
 gem 'dm-postgres-adapter'
 gem 'bcrypt'
 gem 'dotenv'
+gem 'pg'
+gem 'sinatra-partial'
+gem 'haml'
 
 
 group :test do
