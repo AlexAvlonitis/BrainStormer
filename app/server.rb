@@ -1,10 +1,12 @@
 class BrainStormer < Sinatra::Base
+  helpers CurrentUser
   register Sinatra::Partial
   use Rack::MethodOverride
 
   enable :sessions
   set :session_secret, ENV['SESSION']
   use Rack::Protection
+
 
   set :views, Proc.new { File.join(root, "../views") }
   set :public_folder, File.dirname(__FILE__) + '/public'

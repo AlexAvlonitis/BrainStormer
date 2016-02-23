@@ -1,3 +1,4 @@
 = partial :'partials/jumbotron'
 .container
-  %h1 hello world
+  - if current_user
+    %h1= current_user.fname
