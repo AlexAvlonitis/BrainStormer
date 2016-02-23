@@ -4,9 +4,4 @@ class BrainStormer < Sinatra::Base
     haml :index
   end
 
-  get '/users' do
-    @user = 'greask'
-    haml :users
-  end
-
 end

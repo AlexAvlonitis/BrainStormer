@@ -1,6 +1,5 @@
 .container
   %p all users #{@user}
-  - if @user == "alex"
-    %p hello man
-  - else
-    %p piss off
+  = @test
+  - @users.each do |user|
+    %p= user.fname

@@ -1,4 +1,3 @@
-require 'data_mapper'
 require_relative 'app/bs_app'
 
 namespace :db do

@@ -8,7 +8,6 @@ class User
   property :fname,    String
   property :lname,    String
   property :email,    String, format: :email_address, required: true, unique: true
-  property :username, String, required: true, unique: true
   property :password_digest,  BCryptHash, required: true
   property :password_token,   String
   property :token_created_at, Time

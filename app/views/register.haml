@@ -1,0 +1,31 @@
+.container
+  %h1 Sign Up
+  %form.form-horizontal{action: "/api/users", method: "post", id: "register"}
+    .form-group
+      %label.col-sm-2.control-label{for: "inputFname"} First Name
+      .col-sm-10
+        %input.form-control{name: "fname", type: "text", id: "inputFname", placeholder: "First Name"}
+    .form-group
+      %label.col-sm-2.control-label{for: "inputLname"} Last Name
+      .col-sm-10
+        %input.form-control{name: "lname", type: "text", id: "inputLname", placeholder: "Last Name"}
+    .form-group
+      %label.col-sm-2.control-label{for: "inputEmail"} Email
+      .col-sm-10
+        %input.form-control{name: "email", type: "email", id: "inputEmail", placeholder: "Email"}
+    .form-group
+      %label.col-sm-2.control-label{for: "inputPassword"} Password
+      .col-sm-10
+        %input.form-control{name: "password", type: "password", id: "inputPassword", placeholder: "Password"}
+    .form-group
+      %label.col-sm-2.control-label{for: "inputPasswordConfirmation"} Password Confirmation
+      .col-sm-10
+        %input.form-control{name: "password_confirmation", type: "password", id: "inputPasswordConfirmation", placeholder: "Password Confirmation"}
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        .checkbox
+          %label
+            %input{type: "checkbox"} Remember me
+    .form-group
+      .col-sm-offset-2.col-sm-10
+        %button.btn.btn-default{id: "b-register", type: "submit"} Register

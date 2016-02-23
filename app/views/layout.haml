@@ -1,12 +1,11 @@
 !!!
 %html
   %head
-    = partial :head
+    = partial :'partials/head'
   %body
-    = partial :navbar
-    = partial :jumbotron
+    = partial :'partials/navbar'
 
     = yield
 
-    = partial :footer
-    = partial :end_of_html
+    = partial :'partials/footer'
+    = partial :'partials/end_of_html'
