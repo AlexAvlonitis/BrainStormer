@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+
   $.fn.serializeObject = function()
   {
       var o = {};
@@ -15,4 +17,7 @@ $(document).ready(function(){
       });
       return o;
   };
+
+
+
 });

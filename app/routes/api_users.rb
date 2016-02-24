@@ -8,16 +8,18 @@ class BrainStormer < Sinatra::Base
   end
 
   post '/api/users' do
-    req = JSON.parse request.body.read
+    params = JSON.parse request.body.read
 
-    user = User.create( fname: req["fname"],
-                        lname: req["lname"],
-                        email: req["email"],
-                        password: req["password"],
-                        password_confirmation: req["password_confirmation"])
-    session[:user_id] = user.id
+    user = User.create( fname: params["fname"],
+                        lname: params["lname"],
+                        email: params["email"],
+                        password: params["password"],
+                        password_confirmation: params["password_confirmation"])
+
     if user.valid?
+      session[:user_id] = user.id
       status 201
+      user.to_json
     else
       status 500
     end

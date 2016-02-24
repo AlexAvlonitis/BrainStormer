@@ -1,4 +1,6 @@
-= partial :'partials/jumbotron'
+- unless current_user
+  = partial :'partials/jumbotron'
+  
 .container
   - if current_user
-    %h1= current_user.fname
+    %h1= "Welcome #{current_user.fname}"

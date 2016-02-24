@@ -7,10 +7,16 @@
         %span.icon-bar
         %span.icon-bar
       %a.navbar-brand{href: "/"} Brain Stormer
-    #navbar.navbar-collapse.collapse
-      %form.navbar-form.navbar-right{action: "/login", method: "post"}
-        .form-group
-          %input.form-control{name: "email", type: "email", placeholder: "Email"}
-        .form-group
-          %input.form-control{name: "password", type: "password", placeholder: "Password"}
-          %input.btn.btn-success{type: "submit", value: "Sign in"}
+    - if current_user
+      #navbar.navbar-collapse.collapse
+        %form.navbar-form.navbar-right{id: "logout", action: "/logout", method: "post"}
+          .form-group
+            %input.btn.btn-success{type: "submit", value: "Logout"}
+    - else
+      #navbar.navbar-collapse.collapse
+        %form.navbar-form.navbar-right{action: "/login", method: "post", id: "login"}
+          .form-group
+            %input.form-control{name: "email", type: "email", placeholder: "Email", required: true}
+          .form-group
+            %input.form-control{name: "password", type: "password", placeholder: "Password"}
+            %input.btn.btn-success{type: "submit", value: "Sign in"}
