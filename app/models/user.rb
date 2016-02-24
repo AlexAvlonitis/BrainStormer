@@ -12,6 +12,7 @@ class User
   property :password_token,   String
   property :token_created_at, Time
 
+  has n, :teams, through: Resource
 
   attr_accessor :password_confirmation
   attr_reader :password
