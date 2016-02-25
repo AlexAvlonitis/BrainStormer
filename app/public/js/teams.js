@@ -36,7 +36,8 @@ $(document).ready(function(){
     $.each( data, function( key, value ) {
       html += '<div class="card">';
       html += '<div class="card-header">' + '<h2>' + value.title + '</h2>' + '</div>';
-      html += '<div class="card-body">' + '<p>' + value.description + '</p>' + '</div>';
+      html += '<div class="card-body">' + '<p>' + value.description + '</p>' ;
+      html += '<a href="/teams/' + value.id + '">' + "More..." + '</a>' + '</div>';
       html += '</div>';
     });
     $("#teams.row").append(html);
