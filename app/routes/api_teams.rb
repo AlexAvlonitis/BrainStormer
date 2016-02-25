@@ -5,7 +5,7 @@ class BrainStormer < Sinatra::Base
 
     teams = Team.all
 
-    teams.to_json    
+    teams.to_json
   end
 
   post '/api/teams' do
@@ -21,6 +21,27 @@ class BrainStormer < Sinatra::Base
     else
       status 500
     end
+  end
+
+  put '/api/teams/:id' do
+    req = JSON.parse request.body.read
+
+    team = Team.get(params[:id])
+    status 404 if t.nil?
+    status 500 unless team.update(
+                        fname: req["fname"],
+                        lname: req["lname"],
+                        email: req["email"],
+                        )
+  end
+
+
+  delete '/api/teams/:id' do
+    team = Team.get(params[:id])
+    if team.nil?
+      status 404
+    end
+    status 500 unless team.destroy
   end
 
 end

@@ -37,4 +37,12 @@ class BrainStormer < Sinatra::Base
                         )
   end
 
+  delete '/api/tasks/:id' do
+    user = User.get(params[:id])
+    if user.nil?
+      status 404
+    end
+    status 500 unless user.destroy
+  end
+
 end
