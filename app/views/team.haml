@@ -1,2 +1,22 @@
 .container
-  %h1 hello world
+  .row
+    .pane.panel-primary
+      .panel-heading
+        %h1.text-center= @team_title
+      .panel-body
+        %h3.text-center= @team_description
+
+      %hr
+
+      .row
+        .col-md-4
+          %table.table
+            %thead
+              %tr
+                %th Members
+            %tbody
+              %tr
+                %td John
+        .col-md-8
+          .well.well-lg
+            %h3.text-center Idea Box

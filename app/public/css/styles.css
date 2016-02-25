@@ -15,7 +15,8 @@
   margin: 0;
   width: 100%;
   min-height: 50px;
-  background-color: #45d4ff;
+  padding-top: 10px;
+  background-color: #428bca;
   color: white;
   text-align: center;
 }

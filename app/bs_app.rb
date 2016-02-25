@@ -4,6 +4,7 @@ require 'sinatra/base'
 require 'sinatra/flash'
 require "sinatra/json"
 require 'sinatra/partial'
+require 'rest-client'
 require 'json'
 require 'haml'
 
