@@ -5,7 +5,7 @@ require 'sinatra/flash'
 require "sinatra/json"
 require 'sinatra/partial'
 require 'json'
-require 'Haml'
+require 'haml'
 
 require_relative 'routes/init'
 require_relative 'models/init'
