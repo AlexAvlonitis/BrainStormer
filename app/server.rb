@@ -8,8 +8,9 @@ class BrainStormer < Sinatra::Base
   set :session_secret, ENV['SESSION']
   use Rack::Protection
 
-  set :views, Proc.new { File.join(root, "../views") }
-  set :public_folder, File.dirname(__FILE__) + '/public'
+  set :root, File.dirname(__FILE__)
+  set :views, Proc.new { File.join(root, "views") }
+  set :public_folder, Proc.new { File.join(root, "public") }
 
   # start the server if ruby file executed directly
   run! if app_file == $0

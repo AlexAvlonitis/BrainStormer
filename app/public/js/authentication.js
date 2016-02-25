@@ -15,7 +15,7 @@ $(document).ready(function(){
       url: "/login",
       data: formData,
       success: function(data){
-        location.reload();
+        window.location='/';
       },
       error: function(){
         errorModals("Login error", "Wrong Username or Password");
