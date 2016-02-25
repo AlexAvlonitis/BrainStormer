@@ -31,5 +31,18 @@ $(document).ready(function(){
 
   });
 
+  $.getJSON( "/api/teams", function( data ) {
+    var items = [];
+    $.each( data, function( key, val ) {
+      items.push( "<li class='list-group-item' id='" + key + "'>" + val.name + "</li>" );
+    });
+
+    $( "<ul/>", {
+      "class": "list-group",
+      html: items.join( "" )
+    }).appendTo( ".teams-list" );
+    console.log(items);
+  });
+
 
 });

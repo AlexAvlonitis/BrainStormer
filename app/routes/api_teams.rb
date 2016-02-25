@@ -5,15 +5,15 @@ class BrainStormer < Sinatra::Base
 
     teams = Team.all
 
-    teams.to_json    
+    teams.to_json
   end
 
   post '/api/teams' do
     params = JSON.parse request.body.read
 
     team = Team.create(name: params["name"])
-    team.users << team
-    team.save
+    team.users << current_user
+    team.save!
 
     if team.valid?
       status 201
