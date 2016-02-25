@@ -13,6 +13,7 @@ class User
   property :token_created_at, Time
 
   has n, :teams, through: Resource
+  has n, :ideas
 
   attr_accessor :password_confirmation
   attr_reader :password
