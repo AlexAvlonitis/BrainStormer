@@ -2,18 +2,18 @@ $(document).ready(function(){
 
   function newTeamModals(title,body){
     $('#errors-modal').modal('show');
-    $('.modal-title').html("Create a new Team");
+    $('.modal-title').html(title);
     $('.modal-body-content').html(body);
   }
 
   $('#team').click(function() {
-    var form = '<form id="create-team" action="/api/teams" method="post"><div class="form-group"><label for="team-name">Name of the team</label><input name="name" type="text" class="form-control" id="team-name" placeholder="Name"></div><button id="create" type="submit" class="btn btn-default">Create</button></form>';
-    newTeamModals("Login error", form);
+    var form = '<form id="create-team" action="/api/teams" method="post"><div class="form-group"><label for="team-name">Name of the team</label><input name="title" type="text" class="form-control" id="team-name" placeholder="Name"></div><div class="form-group"><label for="team-description">Description</label><input name="description" type="text" class="form-control" id="team-description" placeholder="Description"></div><button id="create" type="submit" class="btn btn-default">Create</button></form>';
+    newTeamModals("Create a new Team", form);
 
     $('form#create-team').submit(function(e) {
       e.preventDefault();
       var formData = JSON.stringify($("form#create-team").serializeObject());
-
+      console.log(formData);
       $.ajax({
         type: "POST",
         url: "/api/teams",
@@ -22,7 +22,7 @@ $(document).ready(function(){
           location.reload();
         },
         error: function(){
-          alert("Create error, You can't have more than one team");
+          alert("Create error, Ops something went wrong");
         },
         dataType: "json",
         contentType : "application/json"
@@ -32,16 +32,14 @@ $(document).ready(function(){
   });
 
   $.getJSON( "/api/teams", function( data ) {
-    var items = [];
-    $.each( data, function( key, val ) {
-      items.push( "<li class='list-group-item' id='" + key + "'>" + val.name + "</li>" );
+    var html = "";
+    $.each( data, function( key, value ) {
+      html += '<div class="card">';
+      html += '<div class="card-header">' + '<h2>' + value.title + '</h2>' + '</div>';
+      html += '<div class="card-body">' + '<p>' + value.description + '</p>' + '</div>';
+      html += '</div>';
     });
-
-    $( "<ul/>", {
-      "class": "list-group",
-      html: items.join( "" )
-    }).appendTo( ".teams-list" );
-    console.log(items);
+    $("#teams.row").append(html);
   });
 
 

@@ -1,8 +1,9 @@
 class Team
   include DataMapper::Resource
 
-  property :id,     Serial
-  property :name,   String
+  property :id,           Serial
+  property :title,        String
+  property :description,  Text
 
   has n, :users, through: Resource
 

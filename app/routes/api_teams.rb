@@ -11,7 +11,7 @@ class BrainStormer < Sinatra::Base
   post '/api/teams' do
     params = JSON.parse request.body.read
 
-    team = Team.create(name: params["name"])
+    team = Team.create(title: params["title"], description: params["description"])
     team.users << current_user
     team.save!
 
@@ -29,9 +29,8 @@ class BrainStormer < Sinatra::Base
     team = Team.get(params[:id])
     status 404 if t.nil?
     status 500 unless team.update(
-                        fname: req["fname"],
-                        lname: req["lname"],
-                        email: req["email"],
+                        title:        req["title"],
+                        description:  req["description"],
                         )
   end
 

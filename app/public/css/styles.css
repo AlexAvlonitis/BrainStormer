@@ -1,0 +1,31 @@
+.card {
+  margin: 20px;
+  width: 250px;
+  min-height: 200px;
+  background-color: #F0F0F0;
+  border-radius: 5px;
+  overflow: hidden;
+  display: inline-block;
+  -webkit-box-shadow: 7px 7px 11px -4px rgba(156,154,156,1);
+  -moz-box-shadow: 7px 7px 11px -4px rgba(156,154,156,1);
+  box-shadow: 7px 7px 11px -4px rgba(156,154,156,1);
+}
+
+.card-header {
+  margin: 0;
+  width: 100%;
+  min-height: 50px;
+  background-color: #45d4ff;
+  color: white;
+  text-align: center;
+}
+
+.card-header h2 {
+  margin-top: 0px;
+}
+
+.card-body {
+  width: 100%;
+  padding: 5px 10px;
+  text-shadow: white 1px 1px;
+}
