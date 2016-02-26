@@ -53,7 +53,7 @@ $(document).ready(function(){
       url: "/logout",
       data: formData,
       success: function(data){
-        location.reload();
+        window.location='/';
       },
       error: function(){
         errorModals("Logout error", "Ops, something went wrong");

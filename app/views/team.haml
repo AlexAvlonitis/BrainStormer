@@ -19,4 +19,19 @@
                 %td John
         .col-md-8
           .well.well-lg
-            %h3.text-center Idea Box
+            %button.btn.btn-success.pull-right{id: "idea", type: "button"} I have an idea!!
+            %h2.text-center Idea Box
+            %table.table
+              %tr
+                %th Name
+                %th Idea
+                %th Description
+                %th Upvote
+              - @ideas.each do |idea|
+                %tr
+                  %td.text-left
+                    - @users.each do |user|
+                      = user["fname"] if user["id"] == idea["user_id"]
+                  %td.text-left= idea["title"]
+                  %td.text-left= idea["description"]
+                  %td.text-left= idea["upvote"]

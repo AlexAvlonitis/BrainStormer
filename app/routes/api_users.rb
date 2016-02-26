@@ -1,5 +1,12 @@
 class BrainStormer < Sinatra::Base
 
+
+  get '/api/users' do
+    content_type :json
+    user = User.all
+    user.to_json
+  end
+
   get '/api/users/:id' do
     content_type :json
 

@@ -1,5 +1,6 @@
 require_relative 'api_users'
 require_relative 'api_teams'
+require_relative 'api_ideas'
 require_relative 'authentication'
 require_relative 'index'
 require_relative 'teams'
