@@ -12,7 +12,8 @@ class BrainStormer < Sinatra::Base
     idea = Idea.create( title:        params["title"],
                         description:  params["description"],
                         user_id:      current_user.id,
-                        team_id:      params["id"])
+                        team_id:      params["id"],
+                        upvote:       0)
 
     if idea.valid?
       status 201
@@ -27,7 +28,7 @@ class BrainStormer < Sinatra::Base
 
     idea = Idea.get(params[:id])
     status 404 if t.nil?
-    status 500 unless user.update(title:        params["title"],
+    status 500 unless idea.update(title:        params["title"],
                                   description:  params["description"],
                                   upvote:       params["upvote"])
   end
