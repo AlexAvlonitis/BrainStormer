@@ -16,14 +16,16 @@
                 %th Members
                 %form{id: "join-team", action: "/api/teams/join", method: "post"}
                   %input{type: "hidden", name: "id", value: @team_id }
-                  %input.btn.btn-default.pull-right{type: "submit", value: "Join the team"}
+                  - unless team_member?(@team_id)
+                    %input.btn.btn-default.pull-right{type: "submit", value: "Join the team"}
             %tbody
               - @team_users.each do |user|
                 %tr
                   %td= "#{user["fname"]} #{user["lname"]} "
         .col-md-8
           .well.well-lg
-            %button.btn.btn-success.pull-right{id: "idea", type: "button"} I have an idea!!
+            - if team_member?(@team_id)
+              %button.btn.btn-success.pull-right{id: "idea", type: "button"} I have an idea!!
             %h2.text-center Idea Box
             %table.table
               %tr
@@ -32,10 +34,11 @@
                 %th Description
                 %th Upvote
               - @ideas.each do |idea|
-                %tr
-                  %td.text-left
-                    - @users.each do |user|
-                      = user["fname"] if user["id"] == idea["user_id"]
-                  %td.text-left= idea["title"]
-                  %td.text-left= idea["description"]
-                  %td.text-left= idea["upvote"]
+                - if idea["team_id"] == @team_id
+                  %tr
+                    %td.text-left
+                      - @users.each do |user|
+                        = user["fname"] if user["id"] == idea["user_id"]
+                    %td.text-left= idea["title"]
+                    %td.text-left= idea["description"]
+                    %td.text-left= idea["upvote"]

@@ -1,5 +1,5 @@
 class BrainStormer < Sinatra::Base
-  helpers CurrentUser
+  helpers CurrentUser, TeamsHelper
   register Sinatra::Flash
   register Sinatra::Partial
   use Rack::MethodOverride

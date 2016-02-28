@@ -11,7 +11,8 @@ class BrainStormer < Sinatra::Base
 
     idea = Idea.create( title:        params["title"],
                         description:  params["description"],
-                        user_id:      current_user.id )
+                        user_id:      current_user.id,
+                        team_id:      params["id"])
 
     if idea.valid?
       status 201

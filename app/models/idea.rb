@@ -7,5 +7,6 @@ class Idea
   property :upvote,       Integer
 
   belongs_to :user
+  belongs_to :team
 
 end

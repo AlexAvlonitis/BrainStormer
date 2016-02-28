@@ -6,5 +6,6 @@ class Team
   property :description,  Text
 
   has n, :users, through: Resource
+  has n, :ideas
 
 end
