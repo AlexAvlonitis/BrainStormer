@@ -41,4 +41,6 @@
                         = user["fname"] if user["id"] == idea["user_id"]
                     %td.text-left= idea["title"]
                     %td.text-left= idea["description"]
-                    %td.text-left= idea["upvote"]
+                    %td.text-left{class: "upvote" + idea["id"].to_s}
+                      = idea["upvote"]
+                      %button.btn.btn-sm.pull-right.upvote{id: "#{idea["id"]}"} +

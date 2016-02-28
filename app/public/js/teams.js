@@ -60,7 +60,7 @@ $(document).ready(function(){
       $('form#create-idea').submit(function(e) {
         e.preventDefault();
         var formData = JSON.stringify($("form#create-idea").serializeObject());
-        console.log(formData);
+
         $.ajax({
           type: "POST",
           url: "/api/ideas",
@@ -77,26 +77,50 @@ $(document).ready(function(){
       });
     });
 
-    $('#join-team').submit(function(e) {
-      e.preventDefault();
-      var formData = JSON.stringify($("#join-team").serializeObject());
+  $('#join-team').submit(function(e) {
+    e.preventDefault();
+    var formData = JSON.stringify($("#join-team").serializeObject());
 
-      $.ajax({
-        type: "POST",
-        url: "/api/teams/join",
-        data: formData,
-        success: function(data){
-          location.reload();
-        },
-        error: function(){
-          newTeamModals("Ops something went wrong");
-        },
-        dataType: "json",
-        contentType : "application/json"
-      });
-
-
+    $.ajax({
+      type: "POST",
+      url: "/api/teams/join",
+      data: formData,
+      success: function(data){
+        location.reload();
+      },
+      error: function(){
+        newTeamModals("Ops something went wrong");
+      },
+      dataType: "json",
+      contentType : "application/json"
     });
+  });
+
+  $('.upvote').click(function(e) {
+    e.preventDefault();
+
+    var ideaId = this.id;
+    var formData = JSON.stringify({"id" : ideaId});
+    var url= "/api/ideas/" + ideaId;
+
+    $.ajax({
+      type: "PUT",
+      url: url,
+      data: formData,
+      success: function(data){
+        $(".upvote" + ideaId).html(data.upvote);
+      },
+      error: function(){
+        newTeamModals("Ops something went wrong");
+      },
+      dataType: "json",
+      contentType : "application/json"
+    });
+  });
+
+  $(".upvote").hover(function(){
+    $(".upvote").attr('title', 'You can only vote once');
+  });
 
   $.getJSON( "/api/teams", function( data ) {
     var html = "";

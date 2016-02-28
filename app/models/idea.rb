@@ -9,4 +9,9 @@ class Idea
   belongs_to :user
   belongs_to :team
 
+  def increase_upvote
+    self.upvote += 1
+    self.save!
+  end
+
 end

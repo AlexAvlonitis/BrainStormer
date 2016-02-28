@@ -25,19 +25,22 @@ class BrainStormer < Sinatra::Base
 
   put '/api/ideas/:id' do
     req = JSON.parse request.body.read
+    idea = Idea.get(params["id"])
 
-    idea = Idea.get(params[:id])
-    status 404 if t.nil?
-    status 500 unless idea.update(title:        params["title"],
-                                  description:  params["description"],
-                                  upvote:       params["upvote"])
+    if idea.increase_upvote
+      status 201
+      idea.to_json
+    elsif idea.nil?
+      status 404
+    else
+      status 500
+    end
+
   end
 
   delete '/api/ideas/:id' do
     idea = Idea.get(params[:id])
-    if idea.nil?
-      status 404
-    end
+    status 404 if idea.nil?
     status 500 unless idea.destroy
   end
 
