@@ -31,7 +31,9 @@ How to use
 To DOs
 ----
 Incomplete tasks, for the future
-* User to be able to vote only once per team
+* Users to be able to vote only once per team
 * Refactor the code to be more DRY
 * Move some of the business logic at the model level
 * Complete authentication system
+* Implement frontend CRUD
+* Remove the teams/:id rest client page, and move everything to jquery.
