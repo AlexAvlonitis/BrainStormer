@@ -27,7 +27,7 @@ class BrainStormer < Sinatra::Base
     team.save!
     if team.valid?
       status 201
-      team.to_json
+      current_user.to_json
     else
       status 500
     end

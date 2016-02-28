@@ -18,7 +18,7 @@
                   %input{type: "hidden", name: "id", value: @team_id }
                   - unless team_member?(@team_id)
                     %input.btn.btn-default.pull-right{type: "submit", value: "Join the team"}
-            %tbody
+            %tbody.members
               - @team_users.each do |user|
                 %tr
                   %td= "#{user["fname"]} #{user["lname"]} "

@@ -28,7 +28,14 @@ $(document).ready(function(){
         url: "/api/teams",
         data: formData,
         success: function(data){
-          location.reload();
+          var html = "";
+          html += '<div class="card">';
+          html += '<div class="card-header">' + '<h2>' + data.title + '</h2>' + '</div>';
+          html += '<div class="card-body">' + '<p>' + data.description + '</p>' ;
+          html += '<a href="/teams/' + data.id + '">' + "Details" + '</a>' + '</div>';
+          html += '</div>';
+          $("#teams.row").append(html);
+          $('#errors-modal').modal('hide');
         },
         error: function(){
           alert("Create error, Ops something went wrong");
@@ -54,6 +61,9 @@ $(document).ready(function(){
       form += '<input name="description" type="text" class="form-control" id="idea-description" placeholder="Description">';
       form += '</div><button id="create" type="submit" class="btn btn-default">Create</button>';
       form += '</form>';
+
+      var ideaTable = "";
+      ideaTable +=
 
       newTeamModals("Write your Idea", form);
 
@@ -86,7 +96,10 @@ $(document).ready(function(){
       url: "/api/teams/join",
       data: formData,
       success: function(data){
-        location.reload();
+        var tr = "";
+        tr += "<tr>";
+        tr += "<td>" + data.fname + " " + data.lname + "</td></tr>";
+        $(".members").append(tr);
       },
       error: function(){
         newTeamModals("Ops something went wrong");
