@@ -1,6 +1,8 @@
 # BrainStormer
 Teams brain-storm ideas and they vote their favorite one
 
+**Deployed on Heroku: http://the-brainstormer.herokuapp.com**
+
 Description
 ----
 A project made during the lab week at makers academy. In Week 6 they let us explore
