@@ -14,9 +14,13 @@
             %thead
               %tr
                 %th Members
+                %form{id: "join-team", action: "/api/teams/join", method: "post"}
+                  %input{type: "hidden", name: "id", value: @team_id }
+                  %input.btn.btn-default.pull-right{type: "submit", value: "Join the team"}
             %tbody
-              %tr
-                %td John
+              - @team_users.each do |user|
+                %tr
+                  %td= "#{user["fname"]} #{user["lname"]} "
         .col-md-8
           .well.well-lg
             %button.btn.btn-success.pull-right{id: "idea", type: "button"} I have an idea!!

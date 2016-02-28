@@ -54,6 +54,27 @@ $(document).ready(function(){
       });
     });
 
+    $('#join-team').submit(function(e) {
+      e.preventDefault();
+      var formData = JSON.stringify($("#join-team").serializeObject());
+      
+      $.ajax({
+        type: "POST",
+        url: "/api/teams/join",
+        data: formData,
+        success: function(data){
+          newTeamModals("Joined the team", "Successfully!");
+        },
+        error: function(){
+          newTeamModals("Ops something went wrong");
+        },
+        dataType: "json",
+        contentType : "application/json"
+      });
+
+
+    });
+
   $.getJSON( "/api/teams", function( data ) {
     var html = "";
     $.each( data, function( key, value ) {

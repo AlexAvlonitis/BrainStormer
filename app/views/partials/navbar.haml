@@ -11,6 +11,7 @@
       #navbar.navbar-collapse.collapse
         %form.navbar-form.navbar-right{id: "logout", action: "/logout", method: "post"}
           .form-group
+            %span{style: 'color: white'}= current_user.fname
             %input.btn.btn-success{type: "submit", value: "Logout"}
     - else
       #navbar.navbar-collapse.collapse

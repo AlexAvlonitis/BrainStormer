@@ -1,1 +1,1 @@
-require_relative 'authentication'
+require_relative 'current_user'

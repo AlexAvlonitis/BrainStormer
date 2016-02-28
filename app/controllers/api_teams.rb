@@ -9,7 +9,28 @@ class BrainStormer < Sinatra::Base
   get '/api/teams/:id' do
     content_type :json
     team = Team.get(params[:id])
+
     team.to_json
+  end
+
+  get '/api/teams/:id/users' do
+    content_type :json
+    team = Team.get(params[:id])
+    team.users.to_json
+  end
+
+  post '/api/teams/join' do
+    params = JSON.parse request.body.read
+
+    team = Team.get(params["id"])
+    team.users << current_user
+    team.save!
+    if team.valid?
+      status 201
+      team.to_json
+    else
+      status 500
+    end
   end
 
   post '/api/teams' do
