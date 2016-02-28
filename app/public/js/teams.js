@@ -100,6 +100,7 @@ $(document).ready(function(){
         tr += "<tr>";
         tr += "<td>" + data.fname + " " + data.lname + "</td></tr>";
         $(".members").append(tr);
+        location.reload();
       },
       error: function(){
         newTeamModals("Ops something went wrong");
