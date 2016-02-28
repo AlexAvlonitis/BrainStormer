@@ -14,6 +14,7 @@ gem 'dotenv'
 gem 'pg'
 gem 'json'
 gem 'haml'
+gem 'rake'
 
 group :test do
   gem 'capybara'
@@ -22,5 +23,4 @@ group :test do
   gem 'database_cleaner'
   gem 'rubocop'
   gem 'rspec'
-  gem 'rake'
 end
